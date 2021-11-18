@@ -38,7 +38,7 @@ export default function Login() {
   return (
     <div className="login-details">
       <div className="login-header">Login</div>
-      <div className="login-email-container">
+      <div className="login-form">
         <InputComp
           placeholderText="Username"
           inputType="text"
@@ -46,23 +46,23 @@ export default function Login() {
           onInputChange={onUserDetailChange}
           errorMsg={userDetailsError.userNameError}
         />
-      </div>
-      <div className="login-email-container">
+
         <InputComp
           placeholderText="Password"
           inputType="password"
           inputTxt="password"
           onInputChange={onUserDetailChange}
-          errorMsg={userDetailsError.userNameError}
+          errorMsg={userDetailsError.passwordError}
         />
-      </div>
-      <div className="button-container">
-        <button className="login-btn" onClick={onLoginClick}>
-          Login
-        </button>
-        <button className="cancel-btn" onClick={onCancelClick}>
-          Cancel
-        </button>
+
+        <div className="button-container">
+          <button className="login-btn" onClick={onLoginClick}>
+            Login
+          </button>
+          <button className="cancel-btn" onClick={onCancelClick}>
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   );
