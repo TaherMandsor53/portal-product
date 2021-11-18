@@ -1,5 +1,15 @@
-input.inputClass {
+.inputClass,
+.inputErrorClass {
   padding: 8px;
   width: 270px;
   font-size: 18px;
+}
+
+.input-details {
+  margin-bottom: 14px;
+
+  .inputErrorMsg {
+    color: red;
+    font-size: 14px;
+  }
 }

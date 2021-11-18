@@ -47,47 +47,43 @@ export default function Registration(props) {
 
   return (
     <div className="registration">
-      <form className="registration-form">
-        <div className="registration-title">Sign Up !</div>
-        <div className="input-comp">
-          <InputComp
-            placeholderText="Name"
-            inputType="text"
-            inputTxt="name"
-            onInputChange={onChangeRegistrationDetails}
-            errorMsg={registrationFormError.nameError}
-          />
-        </div>
-        <div className="input-comp">
-          <InputComp
-            placeholderText="User Name"
-            inputType="text"
-            inputTxt="userName"
-            onInputChange={onChangeRegistrationDetails}
-            errorMsg={registrationFormError.userNameError}
-          />
-        </div>
-        <div className="input-comp">
-          <InputComp
-            placeholderText="Password"
-            inputType="password"
-            inputTxt="password"
-            onInputChange={onChangeRegistrationDetails}
-            errorMsg={registrationFormError.passwordError}
-          />
-        </div>
-        <div className="input-comp">
-          <InputComp
-            placeholderText="Confirm Password"
-            inputType="password"
-            inputTxt="confirmPassword"
-            onInputChange={onChangeRegistrationDetails}
-            errorMsg={registrationFormError.confirmPasswordError}
-          />
-        </div>
+      <div className="registration-title">Sign Up !</div>
+      <div className="register-form">
+        <InputComp
+          placeholderText="Name"
+          inputType="text"
+          inputTxt="name"
+          onInputChange={onChangeRegistrationDetails}
+          errorMsg={registrationFormError.nameError}
+        />
+
+        <InputComp
+          placeholderText="User Name"
+          inputType="text"
+          inputTxt="userName"
+          onInputChange={onChangeRegistrationDetails}
+          errorMsg={registrationFormError.userNameError}
+        />
+
+        <InputComp
+          placeholderText="Password"
+          inputType="password"
+          inputTxt="password"
+          onInputChange={onChangeRegistrationDetails}
+          errorMsg={registrationFormError.passwordError}
+        />
+
+        <InputComp
+          placeholderText="Confirm Password"
+          inputType="password"
+          inputTxt="confirmPassword"
+          onInputChange={onChangeRegistrationDetails}
+          errorMsg={registrationFormError.confirmPasswordError}
+        />
+
         <div className="btns">
           <div>
-            <button onSubmit={register} className="register-btn">
+            <button onClick={register} className="register-btn">
               Register
             </button>
           </div>
@@ -97,7 +93,7 @@ export default function Registration(props) {
             </button>
           </div>
         </div>
-      </form>
+      </div>
     </div>
   );
 }

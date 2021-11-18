@@ -5,7 +5,7 @@ export default function InputComp({ inputType, onInputChange, placeholderText, e
     onInputChange(e);
   };
   return (
-    <>
+    <div className="input-details">
       <input
         type={inputType}
         onChange={onHandleChange}
@@ -15,6 +15,6 @@ export default function InputComp({ inputType, onInputChange, placeholderText, e
         name={inputTxt}
       />
       {errorMsg && <div className="inputErrorMsg">{errorMsg}</div>}
-    </>
+    </div>
   );
 }

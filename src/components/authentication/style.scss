@@ -5,38 +5,39 @@
 }
 
 .registration {
-  display: flex;
-  justify-content: center;
-  height: 635px;
-  align-items: center;
+  margin: 120px auto;
+  width: 500px;
+  border: 1px solid #bebebe;
+  padding: 24px;
 }
 
-.input-comp {
-  padding: 10px;
+.register-form {
+  text-align: center;
 }
 
 .btns {
   margin-top: 15px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
-button.register-btn {
+@mixin buttons {
   padding: 10px 30px 10px 30px;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.register-btn {
+  @include buttons();
   background-color: green;
-  border-radius: 5px;
-  border: none;
-  color: white;
-  cursor: pointer;
 }
 
-button.cancel-btn {
-  padding: 10px 30px 10px 30px;
+.cancel-btn {
+  @include buttons();
   background-color: red;
-  border-radius: 5px;
-  border: none;
-  color: white;
-  cursor: pointer;
+  margin-left: 15px;
 }
 
 .registration-title {
@@ -45,4 +46,5 @@ button.cancel-btn {
   font-family: cursive;
   color: coral;
   font-weight: 700;
+  margin-bottom: 14px;
 }
