@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import InputComp from '../../common-components/InputComp';
+import './style.scss';
 
 export default function Registration(props) {
   const [registrationDetails, setRegistrationDetails] = useState({
@@ -33,7 +34,7 @@ export default function Registration(props) {
         ...prevState,
         nameError: !isValidName ? 'Please Enter Name' : '',
         userNameError: !isValidUserName ? 'Please enter valid username' : '',
-        passwordError: !isValidPass ? 'Please enter valid password' : '',
+        passwordError: !isValidPassword ? 'Please enter valid password' : '',
         confirmPasswordError: !isValidConfirmPassword ? 'Password does not match' : '',
       }));
     }
@@ -47,40 +48,55 @@ export default function Registration(props) {
   return (
     <div className="registration">
       <form className="registration-form">
-        <InputComp
-          placeholderText="Name"
-          inputType="text"
-          inputTxt="name"
-          onInputChange={onChangeRegistrationDetails}
-          errorMsg={userDetailsError.userNameError}
-        />
-        <InputComp
-          placeholderText="User Name"
-          inputType="text"
-          inputTxt="userName"
-          onInputChange={onChangeRegistrationDetails}
-          errorMsg={userDetailsError.userNameError}
-        />
-        <InputComp
-          placeholderText="Password"
-          inputType="password"
-          inputTxt="password"
-          onInputChange={onChangeRegistrationDetails}
-          errorMsg={userDetailsError.userNameError}
-        />
-        <InputComp
-          placeholderText="Confirm Password"
-          inputType="password"
-          inputTxt="confirmPassword"
-          onInputChange={onChangeRegistrationDetails}
-          errorMsg={userDetailsError.userNameError}
-        />
-        <button onSubmit={register} className="register-btn">
-          Register
-        </button>
-        <button className="cancel-btn" onClick={onCancelClick}>
-          Cancel
-        </button>
+        <div className="registration-title">Sign Up !</div>
+        <div className="input-comp">
+          <InputComp
+            placeholderText="Name"
+            inputType="text"
+            inputTxt="name"
+            onInputChange={onChangeRegistrationDetails}
+            errorMsg={registrationFormError.nameError}
+          />
+        </div>
+        <div className="input-comp">
+          <InputComp
+            placeholderText="User Name"
+            inputType="text"
+            inputTxt="userName"
+            onInputChange={onChangeRegistrationDetails}
+            errorMsg={registrationFormError.userNameError}
+          />
+        </div>
+        <div className="input-comp">
+          <InputComp
+            placeholderText="Password"
+            inputType="password"
+            inputTxt="password"
+            onInputChange={onChangeRegistrationDetails}
+            errorMsg={registrationFormError.passwordError}
+          />
+        </div>
+        <div className="input-comp">
+          <InputComp
+            placeholderText="Confirm Password"
+            inputType="password"
+            inputTxt="confirmPassword"
+            onInputChange={onChangeRegistrationDetails}
+            errorMsg={registrationFormError.confirmPasswordError}
+          />
+        </div>
+        <div className="btns">
+          <div>
+            <button onSubmit={register} className="register-btn">
+              Register
+            </button>
+          </div>
+          <div>
+            <button className="cancel-btn" onClick={onCancelClick}>
+              Cancel
+            </button>
+          </div>
+        </div>
       </form>
     </div>
   );

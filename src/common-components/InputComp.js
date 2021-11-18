@@ -10,7 +10,7 @@ export default function InputComp({ inputType, onInputChange, placeholderText, e
         type={inputType}
         onChange={onHandleChange}
         placeholder={placeholderText}
-        className={errorMsg ? 'inputClass' : 'inputErrorClass'}
+        className={errorMsg ? 'inputErrorClass' : 'inputClass'}
         value={inputVal}
         name={inputTxt}
       />
