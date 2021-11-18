@@ -3,3 +3,46 @@
   padding: 40px 20px;
   margin: 0 auto;
 }
+
+.registration {
+  display: flex;
+  justify-content: center;
+  height: 635px;
+  align-items: center;
+}
+
+.input-comp {
+  padding: 10px;
+}
+
+.btns {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+button.register-btn {
+  padding: 10px 30px 10px 30px;
+  background-color: green;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+button.cancel-btn {
+  padding: 10px 30px 10px 30px;
+  background-color: red;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.registration-title {
+  text-align: center;
+  font-size: 35px;
+  font-family: cursive;
+  color: coral;
+  font-weight: 700;
+}
