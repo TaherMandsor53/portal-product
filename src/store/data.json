@@ -1,0 +1,22 @@
+{
+  "productData": [
+    {
+      "itemName": "Colgate",
+      "itemPrice": 100,
+      "itemQuantity": 10,
+      "totalPrice": 1000
+    },
+    {
+      "itemName": "Hair Oil",
+      "itemPrice": 70,
+      "itemQuantity": 10,
+      "totalPrice": 700
+    },
+    {
+      "itemName": "Dish Wash",
+      "itemPrice": 90,
+      "itemQuantity": 10,
+      "totalPrice": 900
+    }
+  ]
+}
