@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import InputComp from '../../common-components/InputComp';
 import './style.scss';
 
@@ -56,7 +57,6 @@ export default function Registration(props) {
           onInputChange={onChangeRegistrationDetails}
           errorMsg={registrationFormError.nameError}
         />
-
         <InputComp
           placeholderText="User Name"
           inputType="text"
@@ -64,7 +64,6 @@ export default function Registration(props) {
           onInputChange={onChangeRegistrationDetails}
           errorMsg={registrationFormError.userNameError}
         />
-
         <InputComp
           placeholderText="Password"
           inputType="password"
@@ -72,7 +71,6 @@ export default function Registration(props) {
           onInputChange={onChangeRegistrationDetails}
           errorMsg={registrationFormError.passwordError}
         />
-
         <InputComp
           placeholderText="Confirm Password"
           inputType="password"
@@ -80,7 +78,7 @@ export default function Registration(props) {
           onInputChange={onChangeRegistrationDetails}
           errorMsg={registrationFormError.confirmPasswordError}
         />
-
+        Already have account ?<Link to="/">Login</Link>
         <div className="btns">
           <div>
             <button onClick={register} className="register-btn">

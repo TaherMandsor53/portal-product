@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import InputComp from '../../common-components/InputComp';
+import { getProductDetails } from '../../action/action';
 
 export default function Login() {
   const [userDetails, setUserDetails] = useState({
@@ -11,6 +13,10 @@ export default function Login() {
     userNameError: '',
     passwordError: '',
   });
+
+  useEffect(() => {
+    getProductDetails();
+  }, []);
 
   const onLoginClick = () => {
     const isValidUserName = userDetails.userName.length > 0;
@@ -54,7 +60,7 @@ export default function Login() {
           onInputChange={onUserDetailChange}
           errorMsg={userDetailsError.passwordError}
         />
-
+        <Link to="/register">Create an account</Link>
         <div className="button-container">
           <button className="login-btn" onClick={onLoginClick}>
             Login

@@ -8,6 +8,7 @@ const initialState = {
 export default function productDetails(state = initialState, action) {
   switch (action.type) {
     case types.PRODUCT_DETAILS_REQUEST:
+      console.log('request');
       return { ...state, isFetching: true };
 
     case types.PRODUCT_DETAILS_SUCCESS:
