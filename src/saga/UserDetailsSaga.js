@@ -3,7 +3,6 @@ import * as types from '../action/actionTypes';
 import api from '../api/api';
 
 function* userSaga(action) {
-  console.log('saga');
   try {
     const userDetails = yield call(api.fetchUserDetails);
     yield put({
@@ -16,7 +15,6 @@ function* userSaga(action) {
 }
 
 function* userDetailsSaga() {
-  console.log('saga');
   yield takeLatest(types.USER_DETAILS_REQUEST, userSaga);
 }
 
