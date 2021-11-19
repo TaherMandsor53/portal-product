@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import InputComp from '../../common-components/InputComp';
-import { getProductDetails } from '../../action/action';
+import { getUserDetails } from '../../action/action';
+import { useDispatch } from 'react-redux';
 
 export default function Login() {
+  const dispatch = useDispatch();
+
   const [userDetails, setUserDetails] = useState({
     userName: '',
     password: '',
@@ -15,7 +18,7 @@ export default function Login() {
   });
 
   useEffect(() => {
-    getProductDetails();
+    dispatch(getUserDetails());
   }, []);
 
   const onLoginClick = () => {
