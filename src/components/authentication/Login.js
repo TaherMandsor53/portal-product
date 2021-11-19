@@ -4,11 +4,11 @@ import InputComp from '../../common-components/InputComp';
 import { getUserDetails } from '../../action/action';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import PrivateRoute from '../../PrivateRoute';
+import PrivateRoute from '../dashboard/PrivateRoute';
+import { Route, Routes } from 'react-router-dom';
 
 export default function Login() {
   const dispatch = useDispatch();
-
   const userDetailsData = useSelector(state => state.userDetails.userDetailsData.userData);
 
   const [userDetails, setUserDetails] = useState({
@@ -26,7 +26,7 @@ export default function Login() {
   useEffect(() => {
     dispatch(getUserDetails());
   }, []);
-  // console.log(userDetailsData);
+
   const onLoginClick = () => {
     const isValidUserName = userDetails.userName.length > 0;
     const isValidPass = userDetails.password.length > 0;
@@ -59,7 +59,7 @@ export default function Login() {
   return (
     <>
       {isAuthenticated ? (
-        <PrivateRoute isAuthenticated={isAuthenticated} />
+        <PrivateRoute />
       ) : (
         <div className="login-details">
           <div className="login-header">Login</div>
