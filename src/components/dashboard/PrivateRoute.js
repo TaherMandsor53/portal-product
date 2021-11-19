@@ -1,10 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Login from '../authentication/Login';
 import Home from './Home';
 
 const PrivateRoute = () => {
-  return <Home />;
+  return (
+    <Routes>
+      <Route path="/home" element={<Home />} />
+    </Routes>
+  );
 };
 
 export default PrivateRoute;

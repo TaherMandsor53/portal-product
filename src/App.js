@@ -4,8 +4,8 @@ import { Route, Routes } from 'react-router-dom';
 import Login from './components/authentication/Login';
 import Registration from './components/authentication/Registration';
 import Home from './components/dashboard/Home';
-import Store from './store/Store';
 import PrivateRoute from './components/dashboard/PrivateRoute';
+import Store from './store/Store';
 
 function App() {
   return (
@@ -14,8 +14,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />}></Route>
           <Route path="/register" element={<Registration />}></Route>
-          <Route path="/home" element={<Home />}></Route>
+          <Route path="/home" element={<Home />} />
         </Routes>
+        {/* <PrivateRoute /> */}
       </Provider>
       {/* <Routes>
         <Route path="/" element={<Login />}></Route>

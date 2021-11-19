@@ -4,8 +4,6 @@ import InputComp from '../../common-components/InputComp';
 import { getUserDetails } from '../../action/action';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import PrivateRoute from '../dashboard/PrivateRoute';
-import { Route, Routes } from 'react-router-dom';
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -36,6 +34,7 @@ export default function Login() {
       userDetailsData.loginId === userDetails.userName &&
       userDetailsData.pass === userDetails.password
     ) {
+      window.location.pathname = '/home';
       setIsAuthenticated(true);
     } else {
       setUserDetailsError(prevState => ({
@@ -58,41 +57,37 @@ export default function Login() {
 
   return (
     <>
-      {isAuthenticated ? (
-        <PrivateRoute />
-      ) : (
-        <div className="login-details">
-          <div className="login-header">Login</div>
-          <div className="login-form">
-            <InputComp
-              placeholderText="Username"
-              inputType="text"
-              inputTxt="userName"
-              inputVal={userDetails.userName}
-              onInputChange={onUserDetailChange}
-              errorMsg={userDetailsError.userNameError}
-            />
+      <div className="login-details">
+        <div className="login-header">Login</div>
+        <div className="login-form">
+          <InputComp
+            placeholderText="Username"
+            inputType="text"
+            inputTxt="userName"
+            inputVal={userDetails.userName}
+            onInputChange={onUserDetailChange}
+            errorMsg={userDetailsError.userNameError}
+          />
 
-            <InputComp
-              placeholderText="Password"
-              inputType="password"
-              inputTxt="password"
-              inputVal={userDetails.password}
-              onInputChange={onUserDetailChange}
-              errorMsg={userDetailsError.passwordError}
-            />
-            <Link to="/register">Create an account</Link>
-            <div className="button-container">
-              <button className="login-btn" onClick={onLoginClick}>
-                Login
-              </button>
-              <button className="cancel-btn" onClick={onCancelClick}>
-                Cancel
-              </button>
-            </div>
+          <InputComp
+            placeholderText="Password"
+            inputType="password"
+            inputTxt="password"
+            inputVal={userDetails.password}
+            onInputChange={onUserDetailChange}
+            errorMsg={userDetailsError.passwordError}
+          />
+          <Link to="/register">Create an account</Link>
+          <div className="button-container">
+            <button className="login-btn" onClick={onLoginClick}>
+              Login
+            </button>
+            <button className="cancel-btn" onClick={onCancelClick}>
+              Cancel
+            </button>
           </div>
         </div>
-      )}
+      </div>
     </>
   );
 }
