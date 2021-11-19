@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import Store from './store/Store';
 import Login from './components/authentication/Login';
 import Registration from './components/authentication/Registration';
+import Home from './components/dashboard/Home';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />}></Route>
           <Route path="/register" element={<Registration />}></Route>
+          <Route path="/home" element={<Home />}></Route>
         </Routes>
       </Provider>
     </div>
