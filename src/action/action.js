@@ -7,8 +7,6 @@ export function getProductDetails() {
 }
 
 export function getUserDetails() {
-  debugger;
-  console.log('action');
   return {
     type: types.USER_DETAILS_REQUEST,
   };

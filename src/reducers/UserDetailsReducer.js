@@ -6,7 +6,6 @@ const initialState = {
 };
 
 export default function userDetails(state = initialState, action) {
-  debugger;
   switch (action.type) {
     case types.USER_DETAILS_REQUEST:
       return Object.assign({}, state, {
