@@ -1,8 +1,10 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import Login from './components/authentication/Login';
 import Registration from './components/authentication/Registration';
 import Home from './components/dashboard/Home';
+import Store from './store/Store';
 
 function App() {
   return (

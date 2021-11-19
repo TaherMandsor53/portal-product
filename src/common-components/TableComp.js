@@ -6,9 +6,19 @@ export default function TableComp({ tableCols, tableData }) {
       <table border="1">
         <tr>
           {tableCols.map(_ => (
-            <td>{_.label}</td>
+            <th>{_.label}</th>
           ))}
         </tr>
+        {tableData &&
+          tableData.map((row, index) => {
+            return (
+              <tr key={index}>
+                {tableCols.map((col, index) => (
+                  <td key={index}>{row[col.value]}</td>
+                ))}
+              </tr>
+            );
+          })}
       </table>
     </div>
   );

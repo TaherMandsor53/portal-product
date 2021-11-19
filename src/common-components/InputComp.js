@@ -1,6 +1,14 @@
 import React from 'react';
 
-export default function InputComp({ inputType, onInputChange, placeholderText, errorMsg, inputVal, inputTxt }) {
+export default function InputComp({
+  inputType,
+  onInputChange,
+  placeholderText,
+  isReadOnly,
+  errorMsg,
+  inputVal,
+  inputTxt,
+}) {
   const onHandleChange = e => {
     onInputChange(e);
   };
@@ -10,9 +18,10 @@ export default function InputComp({ inputType, onInputChange, placeholderText, e
         type={inputType}
         onChange={onHandleChange}
         placeholder={placeholderText}
-        className={errorMsg ? 'inputErrorClass' : 'inputClass'}
+        className={errorMsg ? 'inputErrorClass' : isReadOnly ? 'inputClass readOnly' : 'inputClass'}
         value={inputVal}
         name={inputTxt}
+        readOnly={isReadOnly}
       />
       {errorMsg && <div className="inputErrorMsg">{errorMsg}</div>}
     </div>
