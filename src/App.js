@@ -5,6 +5,7 @@ import Login from './components/authentication/Login';
 import Registration from './components/authentication/Registration';
 import Home from './components/dashboard/Home';
 import Store from './store/Store';
+import PrivateRoute from './components/dashboard/PrivateRoute';
 
 function App() {
   return (
@@ -16,6 +17,10 @@ function App() {
           <Route path="/home" element={<Home />}></Route>
         </Routes>
       </Provider>
+      {/* <Routes>
+        <Route path="/" element={<Login />}></Route>
+        <Route path="/register" element={<Registration />}></Route>
+      </Routes> */}
     </div>
   );
 }
