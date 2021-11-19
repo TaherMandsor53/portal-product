@@ -8,7 +8,6 @@ const fetchProductDetails = () => {
 };
 
 const fetchUserDetails = () => {
-  console.log('api');
   const URL = `${baseURL}/userDetails.json`;
   return axios.get(URL);
 };

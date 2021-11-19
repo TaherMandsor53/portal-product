@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, { useContext } from 'react';
 export default function InputComp({ inputType, onInputChange, placeholderText, errorMsg, inputVal, inputTxt }) {
   const onHandleChange = e => {
     onInputChange(e);

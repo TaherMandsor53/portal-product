@@ -5,7 +5,6 @@ import api from '../api/api';
 function* productSaga(action) {
   try {
     const productDetails = yield call(api.fetchProductDetails);
-    console.log({ productDetails });
     yield put({
       type: types.PRODUCT_DETAILS_SUCCESS,
       productDetails: productDetails.data,

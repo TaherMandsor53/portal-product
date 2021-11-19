@@ -3,9 +3,13 @@ import { Link } from 'react-router-dom';
 import InputComp from '../../common-components/InputComp';
 import { getUserDetails } from '../../action/action';
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import PrivateRoute from '../../PrivateRoute';
 
 export default function Login() {
   const dispatch = useDispatch();
+
+  const userDetailsData = useSelector(state => state.userDetails.userDetailsData.userData);
 
   const [userDetails, setUserDetails] = useState({
     userName: '',
@@ -17,14 +21,22 @@ export default function Login() {
     passwordError: '',
   });
 
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   useEffect(() => {
     dispatch(getUserDetails());
   }, []);
-
+  // console.log(userDetailsData);
   const onLoginClick = () => {
     const isValidUserName = userDetails.userName.length > 0;
     const isValidPass = userDetails.password.length > 0;
-    if (isValidUserName && isValidPass) {
+    if (
+      isValidUserName &&
+      isValidPass &&
+      userDetailsData.loginId === userDetails.userName &&
+      userDetailsData.pass === userDetails.password
+    ) {
+      setIsAuthenticated(true);
     } else {
       setUserDetailsError(prevState => ({
         ...prevState,
@@ -35,7 +47,7 @@ export default function Login() {
   };
 
   const onUserDetailChange = event => {
-    const { name, value } = event;
+    const { name, value } = event.target;
     setUserDetails({ ...userDetails, [name]: value });
   };
 
@@ -45,34 +57,42 @@ export default function Login() {
   };
 
   return (
-    <div className="login-details">
-      <div className="login-header">Login</div>
-      <div className="login-form">
-        <InputComp
-          placeholderText="Username"
-          inputType="text"
-          inputTxt="userName"
-          onInputChange={onUserDetailChange}
-          errorMsg={userDetailsError.userNameError}
-        />
+    <>
+      {isAuthenticated ? (
+        <PrivateRoute isAuthenticated={isAuthenticated} />
+      ) : (
+        <div className="login-details">
+          <div className="login-header">Login</div>
+          <div className="login-form">
+            <InputComp
+              placeholderText="Username"
+              inputType="text"
+              inputTxt="userName"
+              inputVal={userDetails.userName}
+              onInputChange={onUserDetailChange}
+              errorMsg={userDetailsError.userNameError}
+            />
 
-        <InputComp
-          placeholderText="Password"
-          inputType="password"
-          inputTxt="password"
-          onInputChange={onUserDetailChange}
-          errorMsg={userDetailsError.passwordError}
-        />
-        <Link to="/register">Create an account</Link>
-        <div className="button-container">
-          <button className="login-btn" onClick={onLoginClick}>
-            Login
-          </button>
-          <button className="cancel-btn" onClick={onCancelClick}>
-            Cancel
-          </button>
+            <InputComp
+              placeholderText="Password"
+              inputType="password"
+              inputTxt="password"
+              inputVal={userDetails.password}
+              onInputChange={onUserDetailChange}
+              errorMsg={userDetailsError.passwordError}
+            />
+            <Link to="/register">Create an account</Link>
+            <div className="button-container">
+              <button className="login-btn" onClick={onLoginClick}>
+                Login
+              </button>
+              <button className="cancel-btn" onClick={onCancelClick}>
+                Cancel
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 }
