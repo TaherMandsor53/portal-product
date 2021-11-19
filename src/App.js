@@ -1,7 +1,5 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import Store from './store/Store';
 import Login from './components/authentication/Login';
 import Registration from './components/authentication/Registration';
 import Home from './components/dashboard/Home';
