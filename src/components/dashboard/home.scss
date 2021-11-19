@@ -1,0 +1,35 @@
+.search-download {
+  display: flex;
+  width: 455px;
+  margin: auto;
+  .order-search-input {
+    background: #ffffff;
+    border: 1px solid #dfe0eb;
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    width: 300px;
+    .order-search-icon {
+      cursor: pointer;
+      width: 16px;
+      height: 16px;
+      margin-right: 8px;
+    }
+    .order-search {
+      border: none;
+      width: 100%;
+      font-size: 14px;
+    }
+    .order-search:focus {
+      outline: none;
+    }
+    .order-search-clear {
+      cursor: pointer;
+      width: 14px;
+      height: 14px;
+    }
+  }
+}

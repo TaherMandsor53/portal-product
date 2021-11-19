@@ -22,18 +22,20 @@ input:focus {
 .table-container {
   display: flex;
   justify-content: center;
+  margin-bottom: 50px;
   .table-details {
     td,
     th {
       padding: 10px;
     }
+    th {
+      cursor: pointer;
+    }
   }
 }
 
 .download-excel-main {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
+  margin-left: 15px;
   .download-excel {
     display: flex;
     align-items: center;
@@ -44,7 +46,7 @@ input:focus {
     border: 1px solid #bebebe;
     cursor: pointer;
     border-radius: 5px;
-    padding: 6px;
+    padding: 7px;
     .download-icon {
       height: 22px;
       width: 22px;

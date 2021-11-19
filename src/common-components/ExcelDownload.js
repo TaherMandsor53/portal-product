@@ -11,7 +11,7 @@ export default function ExcelDownload({ columnHeaders, data }) {
         <x:ExcelWorkbook>
         <x:ExcelWorksheets>
         <x:ExcelWorksheet>
-        <x:Name>OrderList</x:Name>
+        <x:Name>ProductList</x:Name>
         <x:WorksheetOptions>
         <x:Panes>
         </x:Panes>

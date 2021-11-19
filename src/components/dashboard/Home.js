@@ -4,15 +4,30 @@ import { getProductDetails } from '../../action/action';
 import { useSelector, useDispatch } from 'react-redux';
 import InputComp from '../../common-components/InputComp';
 import ExcelDownload from '../../common-components/ExcelDownload';
+import searchIcon from '../../assets/search-icon.svg';
+import clearIcon from '../../assets/closeIcon.svg';
 
 export default function Home() {
   const dispatch = useDispatch();
+  const [productDetails, setProductDetails] = useState({
+    productName: '',
+    price: '',
+    quantity: '',
+    totalAmt: '',
+  });
+
+  const [productDetailsError, setProductDetailsError] = useState({
+    productNameError: '',
+    priceError: '',
+    quantityError: '',
+    totalAmt: '',
+  });
+  const [searchVal, setSearchVal] = useState('');
 
   useEffect(() => {
     dispatch(getProductDetails());
   }, []);
 
-  const productData = useSelector(state => state.productDetails?.productDetailsData?.productData);
   const tableCols = [
     {
       label: 'Product Name',
@@ -31,20 +46,8 @@ export default function Home() {
       value: 'amount',
     },
   ];
-
-  const [productDetails, setProductDetails] = useState({
-    productName: '',
-    price: '',
-    quantity: '',
-    totalAmt: '',
-  });
-
-  const [productDetailsError, setProductDetailsError] = useState({
-    productNameError: '',
-    priceError: '',
-    quantityError: '',
-    totalAmt: '',
-  });
+  const productData = useSelector(state => state.productDetails?.productDetailsData?.productData);
+  const [tableData, setTableData] = useState('');
 
   const onProductDetailChange = event => {
     const { name, value } = event.target;
@@ -84,11 +87,35 @@ export default function Home() {
     }
   };
 
+  const filterColumns = ['name', 'price'];
+
+  const onSearchChange = val => {
+    const lowercasedValue = val.toLowerCase().trim();
+    setSearchVal(lowercasedValue);
+    if (lowercasedValue === '') {
+      setTableData(productData);
+    } else {
+      const filteredData =
+        productData &&
+        productData.filter(item => {
+          return Object.keys(item).some(key =>
+            filterColumns.includes(key) ? item[key].toString().toLowerCase().includes(lowercasedValue) : false,
+          );
+        });
+      setTableData(filteredData);
+    }
+  };
+
+  const onSearchTextClear = () => {
+    setSearchVal('');
+    setTableData(productData);
+  };
   const totalAmountVal = parseInt(productDetails.price) * parseInt(productDetails.quantity);
 
   return (
     <>
       <div className="product-details">
+        <div className="login-header">Product Details</div>
         <div className="product-form">
           <InputComp
             placeholderText="Product Name"
@@ -132,9 +159,28 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <ExcelDownload data={productData} columnHeaders={tableCols} />
+      <div className="search-download">
+        <div className="order-search-input">
+          <img src={searchIcon} alt="search-icon" className="order-search-icon" />
+          <input
+            className="order-search"
+            placeholder="Product name and price"
+            onChange={event => onSearchChange(event.target.value)}
+            value={searchVal}
+          />
+          {searchVal && (
+            <img src={clearIcon} alt="clear-icon" onClick={onSearchTextClear} className="order-search-clear" />
+          )}
+        </div>
+        {productData && productData.length > 0 && (
+          <ExcelDownload data={tableData || productData} columnHeaders={tableCols} />
+        )}
+      </div>
+
       <div className="table-container">
-        {productData && productData.length > 0 && <TableComp tableCols={tableCols} tableData={productData} />}
+        {productData && productData.length > 0 && (
+          <TableComp tableCols={tableCols} tableData={tableData || productData} />
+        )}
       </div>
     </>
   );
